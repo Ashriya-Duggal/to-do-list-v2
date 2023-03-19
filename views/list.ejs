@@ -18,8 +18,29 @@
     <% } )%>
       <form class="item" action="/" method="post">
         <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+        <button type="submit" class="add" name="list" value="<%= listTitle %>">+</button>
       </form>
-  </div>
+    </div>
+
+
+  <% if (listTitle === "Today"){ %>
+
+  <form class="group" action="/other" method="post">
+
+    <input
+    type="text"
+    name="newItemB"
+    placeholder="New List/ Open List"
+    autocomplete="off"
+    
+    />
+    <button type="submit" class="list" value="<%= listTitle %>" name="newList">Create/Open</button>
+  </form>
+
+  <% } else{ %>
+    <form class=" group" action="/deletelist" method="post">
+      <button type="submit"class="list" value="<%= listTitle %>" name="list">Delete</button>
+    </form>
+  <%}%>
 
 <%- include("footer") -%>
